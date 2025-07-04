@@ -2,6 +2,49 @@
 
 A Model Context Protocol (MCP) server that connects AI assistants (like Claude) to your Binance exchange account, enabling intelligent analysis of your cryptocurrency portfolio and market data. This integration allows AI to provide deep research, strategic insights, and actionable recommendations based on your actual holdings and real-time market conditions.
 
+## ✨ What You'll Get
+
+**🤖 AI Assistant becomes your crypto analyst**:
+- Ask "What should I do with my portfolio?" → Get instant actionable suggestions
+- Type `/generate-investment-report` → Get comprehensive analysis with news and sentiment
+- Say "Show my holdings" → See real-time portfolio breakdown
+
+**📊 Intelligent Portfolio Analysis**:
+- Real-time price monitoring for all your holdings
+- AI-powered market sentiment analysis
+- News research integrated with your specific assets
+- Risk-aware recommendations based on your profile
+
+**🎯 Instant Actions**:
+- Quick TL;DR suggestions: "HOLD BTC, TAKE_PROFIT ETH, REDUCE DOGE"
+- Each suggestion includes reasoning: "Strong 7-day gains - secure profits"
+- Urgency indicators: 🔥 High, ⚠️ Medium, 💡 Low priority
+
+---
+
+## 🚀 Getting Started in 2 Minutes
+
+1. **Get Binance API key** (read-only): Binance → Account → API Management
+2. **Add to Claude Desktop** MCP config with your API keys:
+   ```json
+   {
+     "mcpServers": {
+       "binance-mate": {
+         "command": "npx",
+         "args": ["binance-mate-mcp"],
+         "env": {
+           "BINANCE_API_KEY": "your_actual_api_key_here",
+           "BINANCE_API_SECRET": "your_actual_secret_here"
+         }
+       }
+     }
+   }
+   ```
+3. **Restart Claude Desktop**
+4. **Ask Claude**: "What should I do with my crypto portfolio?"
+
+---
+
 ## What You Can Do
 
 - **Portfolio Analysis** - Get AI-powered insights into your current cryptocurrency holdings
@@ -29,7 +72,21 @@ A Model Context Protocol (MCP) server that connects AI assistants (like Claude) 
 - Binance account with API access enabled
 - Binance API key and secret
 
-## Installation
+## Quick Start
+
+### 🚀 Setup Your Binance API
+
+1. **Get your Binance API key**:
+   - Log in to Binance → Account Settings → API Management
+   - Create new API key with **Read permissions only**
+   - Save your API key and secret
+
+2. **Test the connection** (optional):
+   ```bash
+   BINANCE_API_KEY=your_key BINANCE_API_SECRET=your_secret npx binance-mate-mcp
+   ```
+
+### Advanced: Build from Source
 
 1. Clone this repository:
 ```bash
@@ -53,72 +110,79 @@ BINANCE_API_KEY=your_binance_api_key_here
 BINANCE_API_SECRET=your_binance_api_secret_here
 ```
 
-**Important**: The API credentials must be set in the `.env` file before running the server. Do not add them to the MCP configuration files for security reasons.
-
 5. Build the project:
 ```bash
 npm run build
 ```
 
-## Getting Binance API Keys
-
-1. Log in to your Binance account
-2. Go to Account Settings → API Management
-3. Create a new API key
-4. **Important**: Only enable "Read" permissions for security
-5. Save your API key and secret securely
+**Important**: Make sure to use **read-only** API keys for security. The MCP configuration file securely stores your credentials for the AI assistant.
 
 ## Configuration for AI Applications
 
-### Claude Desktop
+### 🎯 Claude Desktop Setup
 
-1. Open Claude Desktop settings
-2. Navigate to the MCP servers configuration
-3. Add one of the following configurations:
+1. **Open Claude Desktop settings** → MCP servers configuration
 
-**Option 1: Direct Node.js Configuration**
+2. **Add your API keys directly in the config**:
 ```json
 {
   "mcpServers": {
     "binance-mate": {
-      "command": "node",
-      "args": ["/absolute/path/to/binance-mate-mcp/dist/index.js"]
+      "command": "npx",
+      "args": ["binance-mate-mcp"],
+      "env": {
+        "BINANCE_API_KEY": "your_actual_api_key_here",
+        "BINANCE_API_SECRET": "your_actual_secret_here"
+      }
     }
   }
 }
 ```
 
-**Option 2: Using the NVM Proxy Script (Recommended if using NVM)**
-```json
-{
-  "mcpServers": {
-    "binance-mate": {
-      "command": "/bin/bash",
-      "args": ["/absolute/path/to/binance-mate-mcp/binance-mate-mcp-nvm-proxy.sh"]
-    }
-  }
-}
-```
+3. **Restart Claude Desktop**
 
-**Note**:
-- If using the proxy script, make sure it's executable: `chmod +x binance-mate-mcp-nvm-proxy.sh`
-- API credentials must be configured in the `.env` file in the project directory
+#### Alternative: Build from Source
 
-### Claude Code
-
-1. Open Claude Code settings (usually in `~/.claude/claude_code_config.json`)
-2. Add the server configuration:
+<details>
+<summary>Click for advanced source build setup</summary>
 
 ```json
 {
   "mcpServers": {
     "binance-mate": {
       "command": "node",
-      "args": ["/absolute/path/to/binance-mate-mcp/dist/index.js"]
+      "args": ["/absolute/path/to/binance-mate-mcp/dist/index.js"],
+      "env": {
+        "BINANCE_API_KEY": "your_actual_api_key_here",
+        "BINANCE_API_SECRET": "your_actual_secret_here"
+      }
     }
   }
 }
 ```
+</details>
+
+### 🎯 Claude Code Setup
+
+1. **Open Claude Code settings** (`~/.claude/claude_code_config.json`)
+
+2. **Add this configuration**:
+```json
+{
+  "mcpServers": {
+    "binance-mate": {
+      "command": "npx",
+      "args": ["binance-mate-mcp"],
+      "env": {
+        "BINANCE_API_KEY": "your_actual_api_key_here",
+        "BINANCE_API_SECRET": "your_actual_secret_here"
+      }
+    }
+  }
+}
+```
+
+3. **Restart Claude Code**
 
 
 ## Usage
@@ -237,20 +301,20 @@ binance-mate-mcp/
 ## Security Considerations
 
 1. **API Key Permissions**: Only enable "Read" permissions on your Binance API key
-2. **Environment Variables**: Never commit your `.env` file or expose your API credentials
-3. **Secure Storage**: Store your API keys securely in the `.env` file only
-4. **Configuration Files**: Never add API keys directly to MCP configuration files
-5. **Rate Limits**: Be aware of Binance API rate limits to avoid being temporarily banned
+2. **Configuration Security**: Your API keys are stored in MCP configuration files - keep these files secure
+3. **Read-Only Access**: This tool only reads your portfolio data, never executes trades
+4. **Rate Limits**: Be aware of Binance API rate limits to avoid being temporarily banned
+5. **Local Storage**: MCP configuration files are stored locally on your machine only
 
 ## Troubleshooting
 
 ### Server not starting
 - Ensure Node.js 18+ is installed: `node --version`
-- Check that the build completed successfully: `npm run build`
-- Verify your API credentials are correctly set in `.env`
+- Verify your API credentials are correctly set in MCP configuration
+- Check that npx can download the package: `npx binance-mate-mcp --help`
 
 ### Authentication errors
-- Double-check your API key and secret are correct
+- Double-check your API key and secret are correct in the MCP config
 - Ensure your API key has read permissions enabled
 - Check if your API key is restricted by IP (add your IP if needed)
 

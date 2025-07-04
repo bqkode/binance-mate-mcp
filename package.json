@@ -1,8 +1,19 @@
 {
   "name": "binance-mate-mcp",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "dist/index.js",
   "type": "module",
+  "bin": {
+    "binance-mate-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/index.js",
+    "LICENSE",
+    "README.md",
+    "binance-mate-mcp-nvm-proxy.sh",
+    ".env.example"
+  ],
+  "preferGlobal": true,
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
@@ -11,7 +22,28 @@
     "test:watch": "NODE_OPTIONS='--experimental-vm-modules' jest --watch",
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage"
   },
-  "keywords": [],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "binance",
+    "cryptocurrency",
+    "crypto",
+    "portfolio",
+    "ai",
+    "analysis",
+    "claude",
+    "trading",
+    "investment",
+    "blockchain"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bqkode/binance-mate-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bqkode/binance-mate-mcp/issues"
+  },
+  "homepage": "https://github.com/bqkode/binance-mate-mcp#readme",
   "author": "bqkode",
   "license": "MIT",
   "description": "A Model Context Protocol (MCP) server that connects AI assistants to your Binance account for intelligent crypto portfolio analysis and market insights.",
