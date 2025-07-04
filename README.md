@@ -68,7 +68,7 @@ npm run build
 4. **Important**: Only enable "Read" permissions for security
 5. Save your API key and secret securely
 
-## Configuration for Different Platforms
+## Configuration for AI Applications
 
 ### Claude Desktop
 
@@ -76,25 +76,25 @@ npm run build
 2. Navigate to the MCP servers configuration
 3. Add one of the following configurations:
 
-**Option 1: Using the NVM Proxy Script (Recommended if using NVM)**
-```json
-{
-  "mcpServers": {
-    "binance-mate": {
-      "command": "/bin/bash",
-      "args": ["/absolute/path/to/binance-mate-mcp/binance-mate-mcp-nvm-proxy.sh"]
-    }
-  }
-}
-```
-
-**Option 2: Direct Node.js Configuration**
+**Option 1: Direct Node.js Configuration**
 ```json
 {
   "mcpServers": {
     "binance-mate": {
       "command": "node",
       "args": ["/absolute/path/to/binance-mate-mcp/dist/index.js"]
+    }
+  }
+}
+```
+
+**Option 2: Using the NVM Proxy Script (Recommended if using NVM)**
+```json
+{
+  "mcpServers": {
+    "binance-mate": {
+      "command": "/bin/bash",
+      "args": ["/absolute/path/to/binance-mate-mcp/binance-mate-mcp-nvm-proxy.sh"]
     }
   }
 }
@@ -120,34 +120,6 @@ npm run build
 }
 ```
 
-### Cursor
-
-1. Open Cursor settings
-2. Go to Features → AI → Model Context Protocol
-3. Add a new MCP server with the following configuration:
-
-```json
-{
-  "binance-mate": {
-    "command": "node",
-    "args": ["/absolute/path/to/binance-mate-mcp/dist/index.js"]
-  }
-}
-```
-
-### Windsurf
-
-1. Open Windsurf preferences
-2. Navigate to Extensions → MCP Servers
-3. Click "Add Server" and configure:
-
-```json
-{
-  "name": "binance-mate",
-  "command": "node",
-  "args": ["/absolute/path/to/binance-mate-mcp/dist/index.js"]
-}
-```
 
 ## Usage
 
