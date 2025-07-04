@@ -12,8 +12,12 @@ A Model Context Protocol (MCP) server that connects AI assistants (like Claude) 
 
 ## Core Features
 
-- **Get Holdings** - Retrieve your current Binance account balances with detailed breakdown
-- **Get Prices** - Fetch real-time market prices for specific symbols or all your holdings
+- **Portfolio Analysis** - Retrieve your current Binance account balances with detailed breakdown
+- **Real-time Pricing** - Fetch current market prices for specific symbols or all your holdings
+- **Market Research** - Search and analyze recent cryptocurrency news and market trends
+- **Sentiment Analysis** - Evaluate market sentiment based on price action and technical indicators
+- **Investment Reports** - Generate comprehensive AI-powered investment analysis with strategic recommendations
+- **Quick Actions** - Get instant TL;DR suggestions for immediate portfolio decisions
 
 ## Important Disclaimer
 
@@ -147,7 +151,9 @@ npm run build
 
 ## Usage
 
-Once configured, the AI assistant in your chosen platform will have access to two tools:
+Once configured, the AI assistant in your chosen platform will have access to multiple tools and advanced prompts:
+
+## Tools
 
 ### `get_holdings`
 Fetches your current Binance account balances.
@@ -160,6 +166,70 @@ Gets current market prices for specified symbols or all your holdings.
 Example prompts:
 - "What's the current price of Bitcoin and Ethereum?"
 - "Show me the current prices of all my holdings"
+
+### `search_crypto_news`
+Search for recent cryptocurrency news and market analysis.
+
+Example prompts:
+- "Search for recent Bitcoin news"
+- "Find analysis on Ethereum market trends"
+
+### `analyze_market_sentiment`
+Analyze market sentiment for specified cryptocurrency symbols based on recent price action.
+
+Example prompt: "Analyze market sentiment for BTC and ETH"
+
+### `quick_portfolio_actions`
+🚀 **Get instant actionable suggestions for your portfolio** - Quick TL;DR recommendations for each cryptocurrency holding.
+
+**Arguments**:
+- `risk_tolerance` (optional): 'conservative', 'moderate', or 'aggressive' (default: moderate)
+- `market_outlook` (optional): 'bullish', 'neutral', or 'bearish' (default: neutral)
+
+**Example prompts**:
+- "Give me quick actions for my portfolio"
+- "What should I do with my crypto holdings right now?"
+- "Quick portfolio suggestions with conservative risk tolerance"
+
+**Sample Output**:
+```
+🔒 BTC: HOLD 💡
+Core holding showing stable performance
+
+💰 ETH: TAKE_PROFIT ⚠️
+Strong 7-day gains - consider taking some profits
+
+📉 DOGE: REDUCE 🔥
+High volatility detected - consider position sizing
+```
+
+## Advanced Prompts
+
+### `/generate-investment-report`
+**The flagship feature** - Generate comprehensive investment analysis reports that combine:
+- Your current Binance holdings
+- Real-time market prices
+- Recent cryptocurrency news and market analysis
+- Technical sentiment analysis
+- Strategic investment recommendations
+
+**Usage**: Simply type `/generate-investment-report` in your AI assistant
+
+**Arguments**:
+- `include_news` (optional): Set to 'false' to skip news analysis (default: true)
+- `analysis_depth` (optional): 'basic', 'detailed', or 'comprehensive' (default: detailed)
+
+**Example prompts**:
+- `/generate-investment-report` - Full analysis with news
+- `/generate-investment-report include_news=false` - Analysis without news
+- `/generate-investment-report analysis_depth=comprehensive` - Deep technical analysis
+
+This prompt automatically:
+1. Fetches your current holdings
+2. Gets real-time prices for all assets
+3. Searches for recent news on your major holdings
+4. Analyzes market sentiment
+5. Generates actionable investment recommendations
 
 ## Development
 
