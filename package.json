@@ -10,8 +10,7 @@
     "dist/index.js",
     "LICENSE",
     "README.md",
-    "binance-mate-mcp-nvm-proxy.sh",
-    ".env.example"
+    "binance-mate-mcp-nvm-proxy.sh"
   ],
   "preferGlobal": true,
   "scripts": {

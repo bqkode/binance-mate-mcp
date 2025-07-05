@@ -282,7 +282,6 @@ binance-mate-mcp/
 │   ├── index.ts          # Main server implementation
 │   └── __tests__/        # Test files
 ├── dist/                 # Compiled JavaScript files
-├── .env.example          # Example environment configuration
 ├── package.json          # Project dependencies
 └── tsconfig.json         # TypeScript configuration
 ```
