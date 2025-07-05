@@ -99,18 +99,7 @@ cd binance-mate-mcp
 npm install
 ```
 
-3. Create a `.env` file from the example:
-```bash
-cp .env.example .env
-```
-
-4. Edit `.env` and add your Binance API credentials:
-```
-BINANCE_API_KEY=your_binance_api_key_here
-BINANCE_API_SECRET=your_binance_api_secret_here
-```
-
-5. Build the project:
+3. Build the project:
 ```bash
 npm run build
 ```
